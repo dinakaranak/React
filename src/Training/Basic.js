@@ -35,6 +35,7 @@ function Basic() {
         <div>{obj.name},{obj.course}</div>
         <div>{display()}</div>
         <div>{display()}</div>
+        
         <div>{factorial(5)}</div>
         <div>
             <button>click</button>
