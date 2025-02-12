@@ -18,7 +18,7 @@ function UseStateHook() {
         setFacto(fact)
     }
     return (
-    <div>useStateHook
+    <div><h1>useStateHook</h1>
         <input type='text' onChange={(event) => {setNum(event.target.value)}} />
         {/* <button onClick={() => {setNum(67)}}>cick</button> */}
         <button onClick={AssignValue}>click</button>
@@ -35,3 +35,6 @@ export default UseStateHook
 // leap year or non leap year
 // grade calculator
 // bmi, emi, age calculator
+// convert the sentence into title case
+// convert first letter of each word into caps
+// extract initials from given array of names
