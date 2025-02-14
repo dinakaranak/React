@@ -4,11 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 function Routing() {
 
     let nav = useNavigate()
+    let user = {
+        name:"Dhinakaran",
+        course:"react",
+        mail:"dhina@gmail.com"
+    }
 
     function handleNavigation(){
         console.log('navigating....');
 
-        nav('/task4')
+        nav('/UseLocationhook',{state:user})
         
     }
     function handleNav(){
@@ -20,7 +25,7 @@ function Routing() {
 
   return (
     <div>Routing
-        <Link to="/task1">
+        <Link to="/task1"  state={user}>
         <button >task1</button>
         </Link>
         <a href='/task3'>task3</a>
@@ -42,7 +47,6 @@ function Routing() {
             <Link to='task12'>
             <button>task12</button></Link>
         </div>
-
     </div>
   )
 }

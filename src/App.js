@@ -16,6 +16,14 @@ import Basic from './Training/Basic';
 import PropsParent from './Training/PropsParent';
 import UseStateHook from './Training/useStateHook';
 import Routing from './Training/Routing';
+import UseLocationHook from './Training/UseLocationHook';
+import UseParamsHook from './Training/UseParamsHook';
+import FormModel from './Task1/FormModel';
+import Out from './Task1/Out';
+import Login from './Task1/Login';
+import LoginOut from './Task1/LoginOut';
+import FormEvents from './Training/FormEvents';
+import SignIn from './Task1/SignIn';
 
 
 function App() {
@@ -39,9 +47,10 @@ function App() {
     <Task10 />
     <Task11 />
     <Task12 /> */}
+    {/* <FormModel /> */}
     <BrowserRouter>
         <Routes>
-          <Route  path='/'  element={<Routing />}></Route>
+          {/* <Route  path='/'  element={<Routing />}></Route>
           <Route  path='/task1'  element={<Task01 />}></Route>
           <Route  path='/task3'  element={<Task03 />}></Route>
           <Route  path='/task4'  element={<Task04 />}></Route>
@@ -51,7 +60,15 @@ function App() {
           <Route  path='/task9'  element={<Task09 />}></Route>
           <Route  path='/task10'  element={<Task10 />}></Route>
           <Route  path='/task11'  element={<Task11 />}></Route>
-          <Route  path='/task12'  element={<Task12 />}></Route>
+          <Route  path='/task12'  element={<Task12 />}></Route> 
+          <Route path='/useLocationHook' element={<UseLocationHook />}></Route>
+          <Route path='/UseParamsHook/:id' element={<UseParamsHook />}></Route> */}
+          <Route path='/' element={<FormModel />}></Route>
+          <Route path='/Out' element={<Out />}></Route>
+          <Route path='/' element={<Login />}></Route>
+          <Route path='/LoginOut/:id' element={<LoginOut />}></Route>
+          <Route path='/formevents' element={<FormEvents />}></Route>
+          <Route path='/sigin' element={<SignIn />}></Route>
         </Routes>
     </BrowserRouter>
     </div>
