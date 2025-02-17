@@ -24,6 +24,15 @@ import Login from './Task1/Login';
 import LoginOut from './Task1/LoginOut';
 import FormEvents from './Training/FormEvents';
 import SignIn from './Task1/SignIn';
+import MouseEvents from './Training/MouseEvents';
+import MouseTask from './Task1/MouseTask';
+import StonePaper from './Task1/StonePaper';
+import CelToFah from './Task1/CelToFah';
+import RandomChange from './Task1/RandomChange';
+import DialogueBoxes from './Training/DialogueBoxes';
+import Storages from './Training/Storages';
+import FormCredentials from './Task1/FormCredentials';
+import FormCred from './Task1/FormCred';
 
 
 function App() {
@@ -50,7 +59,7 @@ function App() {
     {/* <FormModel /> */}
     <BrowserRouter>
         <Routes>
-          {/* <Route  path='/'  element={<Routing />}></Route>
+         <Route  path='/'  element={<Routing />}></Route>
           <Route  path='/task1'  element={<Task01 />}></Route>
           <Route  path='/task3'  element={<Task03 />}></Route>
           <Route  path='/task4'  element={<Task04 />}></Route>
@@ -62,13 +71,22 @@ function App() {
           <Route  path='/task11'  element={<Task11 />}></Route>
           <Route  path='/task12'  element={<Task12 />}></Route> 
           <Route path='/useLocationHook' element={<UseLocationHook />}></Route>
-          <Route path='/UseParamsHook/:id' element={<UseParamsHook />}></Route> */}
+          <Route path='/UseParamsHook/:id' element={<UseParamsHook />}></Route> 
           <Route path='/' element={<FormModel />}></Route>
           <Route path='/Out' element={<Out />}></Route>
           <Route path='/' element={<Login />}></Route>
           <Route path='/LoginOut/:id' element={<LoginOut />}></Route>
           <Route path='/formevents' element={<FormEvents />}></Route>
           <Route path='/sigin' element={<SignIn />}></Route>
+          <Route path='/MouseEvents' element={<MouseEvents />}></Route>
+          <Route path='/MouseTask' element={<MouseTask />}></Route>
+          <Route path='/StonePaper' element={<StonePaper />}></Route>
+          <Route path='/CelToFah' element={<CelToFah />}></Route>
+          <Route path='/RandomChange' element={<RandomChange />}></Route>
+          <Route path='/DialogueBoxes' element={<DialogueBoxes />}></Route>
+          <Route path='/Storages' element={<Storages />}></Route>
+          <Route path='/FormCredentials' element={<FormCredentials />}></Route>
+          <Route path='/FormCred' element={<FormCred />}></Route>
         </Routes>
     </BrowserRouter>
     </div>

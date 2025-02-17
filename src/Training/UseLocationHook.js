@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 function UseLocationHook() {
 
     let location = useLocation()
-    console.log(location.state);
+    console.log(location);
     let user = location.state
     
   return (

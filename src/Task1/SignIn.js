@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function SignIn() {
     const [detail, setDetail]=useState({
@@ -12,9 +13,11 @@ function SignIn() {
     function handleChange(e){
         setDetail({...detail,[e.target.name]:e.target.value})
     }
+    const navigate = useNavigate()
     function handleSubmit(e){
         e.preventDefault()
         console.log(detail);
+        navigate("/Out", { state: detail });
         
     }
 
