@@ -20,8 +20,7 @@ import UseLocationHook from './Training/UseLocationHook';
 import UseParamsHook from './Training/UseParamsHook';
 import FormModel from './Task1/FormModel';
 import Out from './Task1/Out';
-import Login from './Task1/Login';
-import LoginOut from './Task1/LoginOut';
+
 import FormEvents from './Training/FormEvents';
 import SignIn from './Task1/SignIn';
 import MouseEvents from './Training/MouseEvents';
@@ -32,12 +31,18 @@ import RandomChange from './Task1/RandomChange';
 import DialogueBoxes from './Training/DialogueBoxes';
 import Storages from './Training/Storages';
 import FormCredentials from './Task1/FormCredentials';
-import FormCred from './Task1/FormCred';
+
+import { useState } from 'react';
+import Signup from './Task1/Signup';
+import Login from './Task1/Login';
+import ValidationUsingYup from './Training/ValidationUsingYup';
+
+
 
 
 function App() {
   //features in react js; virtual dom, component based library, babel(transpiler), one way data flow, JSX(javascript embedded with html)
-
+  const [page, setPage] = useState("signup");
 
   return (
     <div className="App">
@@ -59,7 +64,7 @@ function App() {
     {/* <FormModel /> */}
     <BrowserRouter>
         <Routes>
-         <Route  path='/'  element={<Routing />}></Route>
+         <Route  path='/t'  element={<Routing />}></Route>
           <Route  path='/task1'  element={<Task01 />}></Route>
           <Route  path='/task3'  element={<Task03 />}></Route>
           <Route  path='/task4'  element={<Task04 />}></Route>
@@ -72,10 +77,8 @@ function App() {
           <Route  path='/task12'  element={<Task12 />}></Route> 
           <Route path='/useLocationHook' element={<UseLocationHook />}></Route>
           <Route path='/UseParamsHook/:id' element={<UseParamsHook />}></Route> 
-          <Route path='/' element={<FormModel />}></Route>
+          <Route path='/f' element={<FormModel />}></Route>
           <Route path='/Out' element={<Out />}></Route>
-          <Route path='/' element={<Login />}></Route>
-          <Route path='/LoginOut/:id' element={<LoginOut />}></Route>
           <Route path='/formevents' element={<FormEvents />}></Route>
           <Route path='/sigin' element={<SignIn />}></Route>
           <Route path='/MouseEvents' element={<MouseEvents />}></Route>
@@ -86,9 +89,15 @@ function App() {
           <Route path='/DialogueBoxes' element={<DialogueBoxes />}></Route>
           <Route path='/Storages' element={<Storages />}></Route>
           <Route path='/FormCredentials' element={<FormCredentials />}></Route>
-          <Route path='/FormCred' element={<FormCred />}></Route>
+          <Route path='/ValidationUsingYup' element={<ValidationUsingYup />}></Route>
+          
+        
+          
         </Routes>
     </BrowserRouter>
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      {page === "signup" ? <Signup switchToLogin={() => setPage("login")} /> : <Login switchToSignup={() => setPage("signup")} />}
+    </div>
     </div>
    
   );

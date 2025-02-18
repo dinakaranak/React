@@ -1,0 +1,59 @@
+.form{
+    margin-left: 30%;
+    text-align: center;
+    width: 30%;
+    border: 2px solid;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.box-1{
+    margin-left: 40px;
+    height: 20px;
+}
+.box-2{
+    margin-left: 44px;
+    height: 20px;
+   
+}
+.box-3{
+    margin-left: 15px;
+    height: 20px;
+}
+.box-4{
+    margin-left: 30px;
+    height: 20px;
+}
+.btn-1{
+    margin-left: 100px;
+}
+
+/* login form */
+.log{
+    margin-left: 30%;
+    text-align: center;
+    width: 30%;
+    border: 2px solid;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+.iv-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+.inp-1{
+   height: 20px;
+}
+.inp-2{
+    height: 20px;
+ }
+ .btn-2{
+    margin-left: 100px;
+ }

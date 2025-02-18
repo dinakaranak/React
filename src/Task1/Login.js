@@ -1,46 +1,58 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-
-const Login = () => {
-  const { id } = useParams();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-  const navigate = useNavigate();
+import Swal from "sweetalert2";
+import './Common.css'
+const Login = ({ switchToSignup }) => {
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    navigate(`/LoginOut/${formData.name}`);
+    // Retrieve stored user details
+    const storedEmail = localStorage.getItem("userEmail");
+    const storedPassword = localStorage.getItem("userPassword");
+
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      setError("Invalid email format.");
+    } else if (form.email === storedEmail && form.password === storedPassword) {
+         Swal.fire({
+                  title: "Login Successfully!",
+                  icon: "success",
+                  draggable: true
+                });
+      setError(""); // Clear error message
+    } else {
+         Swal.fire({
+                    title: "incorrect email or password",
+                    icon: "error",
+                    draggable: true
+                  });
+    //   setError("Incorrect Email or Password ❌");
+    }
   };
 
   return (
     <div>
-      <h2>User Form</h2>
-      {id && <p>Editing User ID: {id}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <br />
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <br />
-        <button type="submit">Submit</button>
+        <div className="log">
+      <h1>Login</h1>
+      <form onSubmit={handleLogin} noValidate style={{ display: "inline-block", textAlign: "left" }}>
+        <div className="iv-1">
+          <label>Email:</label>
+          <input className="inp-1" type="email" name="email" value={form.email} onChange={handleChange} required />
+        </div>
+        <div className="iv-1">
+          <label>Password:</label>
+          <input className="inp-2" type="password" name="password" value={form.password} onChange={handleChange} required />
+        </div>
+        <button className="btn-2" type="submit">Login</button>
+        <p style={{ color: "red" }}>{error}</p>
       </form>
+      <p>
+        Don't have an account? <button onClick={switchToSignup}>Signup</button>
+      </p></div>
     </div>
   );
 };
