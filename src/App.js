@@ -36,6 +36,12 @@ import { useState } from 'react';
 import Signup from './Task1/Signup';
 import Login from './Task1/Login';
 import ValidationUsingYup from './Training/ValidationUsingYup';
+import UseEffectHook from './Training/UseEffectHook';
+import Timer from './Task1/Timer';
+
+import StopWatch from './Task1/StopWatch';
+import UseEffectWithAPI from './Training/UseEffectWithAPI';
+import APIWithCard from './Task1/APIWithCard';
 
 
 
@@ -90,14 +96,19 @@ function App() {
           <Route path='/Storages' element={<Storages />}></Route>
           <Route path='/FormCredentials' element={<FormCredentials />}></Route>
           <Route path='/ValidationUsingYup' element={<ValidationUsingYup />}></Route>
+          <Route path='/UseEffectHook' element={<UseEffectHook />}></Route>
+          <Route path='/Timer' element={<Timer />}></Route>
+          <Route path='/StopWatch' element={<StopWatch />}></Route>
+          <Route path='/UseEffectWithAPI' element={<UseEffectWithAPI />}></Route>
+          <Route path='/APIWithCard' element={<APIWithCard />}></Route>
           
         
           
         </Routes>
     </BrowserRouter>
-    <div style={{ textAlign: "center", padding: "20px" }}>
+    {/* <div style={{ textAlign: "center", padding: "20px" }}>
       {page === "signup" ? <Signup switchToLogin={() => setPage("login")} /> : <Login switchToSignup={() => setPage("signup")} />}
-    </div>
+    </div> */}
     </div>
    
   );
