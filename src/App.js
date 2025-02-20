@@ -42,6 +42,9 @@ import Timer from './Task1/Timer';
 import StopWatch from './Task1/StopWatch';
 import UseEffectWithAPI from './Training/UseEffectWithAPI';
 import APIWithCard from './Task1/APIWithCard';
+import UseReducerHook from './Training/UseReducerHook';
+import TodoList from './Task1/TodoList';
+import Todo from './Task1/Todo';
 
 
 
@@ -101,6 +104,11 @@ function App() {
           <Route path='/StopWatch' element={<StopWatch />}></Route>
           <Route path='/UseEffectWithAPI' element={<UseEffectWithAPI />}></Route>
           <Route path='/APIWithCard' element={<APIWithCard />}></Route>
+          <Route path='/UseReducerHook' element={<UseReducerHook />}></Route>
+          <Route path='/Todo' element={<Todo />}></Route>
+          <Route path='/TodoList' element={<TodoList />}></Route>
+
+        
           
         
           
