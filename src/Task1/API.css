@@ -13,7 +13,9 @@
 .tex{
     font-size: 14px;
 }
-
+.button{
+    margin-right: 10px;
+}
 
 /* navbar */
 .nav{
@@ -24,4 +26,25 @@
 }
 .dd{
     margin-left: 100px;
+}
+
+/* Product add and delete using useReducerHook */
+.car{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(209, 235, 245);
+}
+.bod{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn-2{
+    margin-right: 200px;
+    margin-left: 200px;
+}
+.total{
+    margin-left: 250px;
 }

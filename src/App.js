@@ -45,6 +45,10 @@ import APIWithCard from './Task1/APIWithCard';
 import UseReducerHook from './Training/UseReducerHook';
 import TodoList from './Task1/TodoList';
 import Todo from './Task1/Todo';
+import AddToCart from './Task1/AddToCart';
+import ProductList from './Task1/ProductList';
+import Website from './Task1/Website';
+
 
 
 
@@ -73,7 +77,7 @@ function App() {
     {/* <FormModel /> */}
     <BrowserRouter>
         <Routes>
-         <Route  path='/t'  element={<Routing />}></Route>
+         <Route  path='/'  element={<Routing />}></Route>
           <Route  path='/task1'  element={<Task01 />}></Route>
           <Route  path='/task3'  element={<Task03 />}></Route>
           <Route  path='/task4'  element={<Task04 />}></Route>
@@ -86,7 +90,7 @@ function App() {
           <Route  path='/task12'  element={<Task12 />}></Route> 
           <Route path='/useLocationHook' element={<UseLocationHook />}></Route>
           <Route path='/UseParamsHook/:id' element={<UseParamsHook />}></Route> 
-          <Route path='/f' element={<FormModel />}></Route>
+          <Route path='/FormModel' element={<FormModel />}></Route>
           <Route path='/Out' element={<Out />}></Route>
           <Route path='/formevents' element={<FormEvents />}></Route>
           <Route path='/sigin' element={<SignIn />}></Route>
@@ -107,7 +111,10 @@ function App() {
           <Route path='/UseReducerHook' element={<UseReducerHook />}></Route>
           <Route path='/Todo' element={<Todo />}></Route>
           <Route path='/TodoList' element={<TodoList />}></Route>
-
+          <Route path='/AddToCart' element={<AddToCart />}></Route>
+          <Route path='/ProductList' element={<ProductList />}></Route>
+          <Route path='/Website' element={<Website />}></Route>
+         
         
           
         

@@ -16,7 +16,7 @@ function reducer(state,task){
 function UseReducerHook() {
     const [state, dispatch] = useReducer(reducer,{count:0})
   return (
-    <div>UseReducerHook
+    <div>
         <button onClick={() => {dispatch({type:"inc", input:2})}}>+</button>
         {state.count}
         <button onClick={() => dispatch({type:"dec", input:3})}>-</button>

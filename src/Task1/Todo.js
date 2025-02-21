@@ -21,6 +21,7 @@ function Todo() {
             <h2>Todo List</h2>
             <input 
                 type='text' 
+                placeholder='Type Here.....'
                 value={input} 
                 onChange={(e) => setInput(e.target.value)}
             />
@@ -32,9 +33,8 @@ function Todo() {
             }}>Add</button>
             <p>
                 {todos.map((todo, index) => (
-                    <p key={index} style={{marginTop:"50px"}}>{todo} 
+                    <p key={index} style={{marginTop:"20px"}}>{todo} 
                   <button onClick={() => dispatch({ type: "delete", payload: index })} style={{marginLeft:"50px"}}>Delete</button>
-                  
                   </p>
                 ))}
             </p>

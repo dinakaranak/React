@@ -68,7 +68,8 @@ function APIWithCard() {
         <Card.Text>
            $ {todo.price}
         </Card.Text>
-        <Button variant="primary">{todo.category}</Button>
+        <Button variant="primary" className='button'>{todo.category}</Button>
+        <Button>Add to Cart</Button>
       </Card.Body>
     </Card>
     ))}
