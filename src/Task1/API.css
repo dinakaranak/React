@@ -45,6 +45,18 @@
     margin-right: 200px;
     margin-left: 200px;
 }
+.btn-3{
+    margin-top: 30px;
+}
 .total{
     margin-left: 250px;
+}
+.div{
+    display: flex;
+    justify-content: space-between;
+}
+.div-1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

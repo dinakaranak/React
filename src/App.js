@@ -48,8 +48,14 @@ import Todo from './Task1/Todo';
 import AddToCart from './Task1/AddToCart';
 import ProductList from './Task1/ProductList';
 import Website from './Task1/Website';
-
-
+import Add from './Task1/Add';
+import UseContextHook from './Training/UseContextHook';
+import TodoContextHook from './Task1/TodoContextHook';
+import ProductContextHook from './Task1/ProductContextHook';
+import { BrowserRouter as Router, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./Task1/AuthContext";
+import Home from "./Task1/Home";
+import Logout from './Task1/Logout';
 
 
 
@@ -114,6 +120,11 @@ function App() {
           <Route path='/AddToCart' element={<AddToCart />}></Route>
           <Route path='/ProductList' element={<ProductList />}></Route>
           <Route path='/Website' element={<Website />}></Route>
+          <Route path='/Add' element={<Add />}></Route>
+          <Route path='/UseContextHook' element={<UseContextHook />}></Route>
+          <Route path='/TodoContextHook' element={<TodoContextHook />}></Route>
+          <Route path='/ProductContextHook' element={<ProductContextHook />}></Route>
+         
          
         
           
@@ -124,10 +135,25 @@ function App() {
     {/* <div style={{ textAlign: "center", padding: "20px" }}>
       {page === "signup" ? <Signup switchToLogin={() => setPage("login")} /> : <Login switchToSignup={() => setPage("signup")} />}
     </div> */}
+
+<AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/d" element={<Logout />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
+
+
     </div>
    
   );
-}
+};
+const ProtectedRoute = ({ component: Component }) => {
+  const { isAuth } = useAuth();
+  return isAuth ? <Component /> : <Navigate to="/" />;
+};
 
 export default App;
 

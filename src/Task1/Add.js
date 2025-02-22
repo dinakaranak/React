@@ -5,16 +5,17 @@ import { FaShoppingCart } from 'react-icons/fa';
 import axios from 'axios';
 import './API.css';
 
-function Website() {
+function Add() {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
-    const [showCart, setShowCart] = useState(false); // Toggle between products and cart page
+    const [showCart, setShowCart] = useState(false); 
 
     useEffect(() => {
         axios.get('https://fakestoreapi.com/products')
             .then(res => setProducts(res.data));
     }, []);
+
     // Add to Cart Function
     const addToCart = (product) => {
         const existingItem = cart.find(item => item.id === product.id);
@@ -49,12 +50,11 @@ function Website() {
         setCart(updatedCart);
     };
 
-
-    // Remove from Cart Function
-    const removeFromCart = (index) => {
-        const itemToRemove = cart[index];
-        setCart(cart.filter((_, i) => i !== index));
-        setTotal(total - itemToRemove.price);
+    // Remove from Cart Completely
+    const removeFromCart = (productId) => {
+        const itemToRemove = cart.find(item => item.id === productId);
+        setCart(cart.filter(item => item.id !== productId));
+        setTotal(total - (itemToRemove.price * itemToRemove.quantity));
     };
 
     return (
@@ -75,7 +75,7 @@ function Website() {
                         </Nav>
                         {/* Cart Icon */}
                         <Button variant="outline-dark" onClick={() => setShowCart(true)}>
-                            <FaShoppingCart /> ({cart.length})
+                            <FaShoppingCart /> ({cart.reduce((acc, item) => acc + item.quantity, 0)})
                         </Button>
                     </Navbar.Collapse>
                 </Container>
@@ -87,20 +87,20 @@ function Website() {
                 <div className="container mt-4">
                     <h3>Shopping Cart</h3>
                     {cart.length === 0 ? <p>No items in cart</p> : (
-                        <p className="list-group">
-                            {cart.map((item, index) => (
-                              
-                                <p key={index} className="list-group-item">
-                                      <div className='div'>
-                                   <p> {item.title} - ${item.price}</p>
-                                     <div className='div-1'> 
-                                    <Button  variant="black" size="sm" onClick={() => addToCart(item)}>+</Button>{item.quantity}
-                                    <Button  variant="black"  size="sm" onClick={() => decreaseQuantity(item.id)}>-</Button>
-                                    <Button variant="black" size="sm" onClick={() => removeFromCart(index)}>Remove</Button></div>
+                        <ul className="list-group">
+                            {cart.map((item) => (
+                                <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>
+                                        {item.title} - ${item.price}
+                                    </span>
+                                    <div>
+                                        <Button variant="success" size="sm" onClick={() => addToCart(item)}>+</Button>{item.quantity}
+                                        <Button variant="warning" size="sm" onClick={() => decreaseQuantity(item.id)}>-</Button>
+                                        <Button variant="danger" size="sm" onClick={() => removeFromCart(item.id)}>Remove</Button>
                                     </div>
-                                </p>
+                                </li>
                             ))}
-                        </p>
+                        </ul>
                     )}
                     <h4 className="mt-3">Total Price: ${total.toFixed(2)}</h4>
                     <Button variant="secondary" className="mt-3" onClick={() => setShowCart(false)}>Back to Products</Button>
@@ -110,9 +110,8 @@ function Website() {
                 <div className="d-flex flex-wrap justify-content-center">
                     {products.map((product) => (
                         <Card key={product.id} className="m-3" style={{ width: '18rem' }}>
-                          
-                            <Card.Body  className='body'>
-                            <Card.Img variant="top" src={product.image} style={{ height: "250px", width:"250px"}} />
+                            <Card.Body className='body'>
+                                <Card.Img variant="top" src={product.image} style={{ height: "250px", width: "250px" }} />
                                 <Card.Title className='tit'>{product.title}</Card.Title>
                                 <Card.Text className='tex'>{product.description.substring(0, 100)}...</Card.Text>
                                 <Card.Text><strong>Price:</strong> $ {product.price}</Card.Text>
@@ -129,4 +128,4 @@ function Website() {
     );
 }
 
-export default Website;
+export default Add;
