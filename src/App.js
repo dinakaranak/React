@@ -56,6 +56,13 @@ import { BrowserRouter as Router, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./Task1/AuthContext";
 import Home from "./Task1/Home";
 import Logout from './Task1/Logout';
+import DataTableTask from './Training/DataTableTask';
+import DataTableDummy from './Task1/DataTableDummy';
+import StudentManagement from './Task1/StudentManagement';
+import Category from './Training/Category';
+import BorrowBook from './Task1/BorrowBook';
+import LibraryManagement from './Task1/LibraryManagement';
+
 
 
 
@@ -124,6 +131,13 @@ function App() {
           <Route path='/UseContextHook' element={<UseContextHook />}></Route>
           <Route path='/TodoContextHook' element={<TodoContextHook />}></Route>
           <Route path='/ProductContextHook' element={<ProductContextHook />}></Route>
+          <Route path='/DataTableTask' element={<DataTableTask />}></Route>
+          <Route path='/DataTableDummy' element={<DataTableDummy />}></Route>
+          <Route path='/StudentManagement' element={<StudentManagement />}></Route>
+          <Route path='/Category' element={<Category />}></Route>
+          <Route path='/BorrowBook' element={<BorrowBook />}></Route>
+          <Route path='/LibraryManagement' element={<LibraryManagement />}></Route>
+
          
          
         
