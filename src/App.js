@@ -20,7 +20,7 @@ import UseLocationHook from './Training/UseLocationHook';
 import UseParamsHook from './Training/UseParamsHook';
 import FormModel from './Task1/FormModel';
 import Out from './Task1/Out';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import FormEvents from './Training/FormEvents';
 import SignIn from './Task1/SignIn';
 import MouseEvents from './Training/MouseEvents';

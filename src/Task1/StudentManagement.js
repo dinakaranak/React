@@ -2,6 +2,11 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import './Library.css'
 
 function StudentManagement() {
     const [postStu, setPostStu] = useState([])
@@ -38,14 +43,38 @@ function StudentManagement() {
                 <div>
                     <button onClick={()=> handleEdit(row)}>update</button>
             <button onClick={() => handleDelete(row.bookId)}>Delete</button>
-            <button 
+            {/* <button 
                         onClick={() => openBorrowPopup(row.bookId)} 
                         disabled={row.availabilityStatus === "Borrowed"}
                     >
                         Borrow
                     </button>
+                    <button onClick={()=>handleReturn(row.bookId)}
+                        disabled={row.availabilityStatus === "Available"}
+                    >Return</button> */}
+                    {/* {row.availabilityStatus === "Borrowed" && (
+                        <button onClick={() => handleReturn(row.bookId)}>Return</button>
+                    )} */}
             </div>
+            
         },
+        {
+        name:"Borrow",
+         selector: row => 
+            <div>
+                {/* <button onClick={()=> handleEdit(row)}>update</button>
+        <button onClick={() => handleDelete(row.bookId)}>Delete</button> */}
+        <button 
+                    onClick={() => openBorrowPopup(row.bookId)} 
+                    disabled={row.availabilityStatus === "Borrowed"}
+                >
+                    Borrow
+                </button>
+                <button onClick={()=>handleReturn(row.bookId)}
+                    disabled={row.availabilityStatus === "Available"}
+                >Return</button>
+        </div>
+        }
         
 
     ]
@@ -167,19 +196,65 @@ function StudentManagement() {
         .catch(err => console.error("Error borrowing book:", err));
     }
     
+    function handleReturn(bookId) {
+        const returnDate = new Date().toISOString().split('T')[0]; // Get current date in YYYY-MM-DD format
+        axios.post("http://92.205.109.210:8051/library/returnbook", {
+            bookId,
+            returndate: returnDate
+        })
+            .then(() => {
+                alert("Book returned successfully");
+                getPost();
+            })
+            .catch(err => console.error("Error returning book:", err));
+    }
   return (
     <div>
+        <div>
+        <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                Another action
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">
+                Separated link
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link eventKey={2} href="#memes">
+              Dank memes
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 
+        </div>
+        <div className='read'>
+            <div className='sub'>
         <input type='text' placeholder='Enter Title' name='title' value={detail.title} onChange={handleChange}></input>
         <input type='text' placeholder='Enter Author' name='author' value={detail.author} onChange={handleChange}></input>
         <input type='text' placeholder='Enter Genre' name='genre' value={detail.genre} onChange={handleChange}></input>
         <button onClick={handleSubmit}>Submit</button>
         <Link to="/BorrowBook">
-        <button>Borrow Book</button></Link>
-        <DataTable 
+        <button>Borrow Book</button></Link></div>
+        <DataTable className='table'
            columns={colum}
            data={postStu}
         />
+         {showPopup && (
         <div className="popup-content">
                         <h3>Borrow Book</h3>
                         <input type="text" name="name" placeholder="Enter Your Name" value={borrowDetails.name} onChange={handleBorrowChange} />
@@ -187,7 +262,11 @@ function StudentManagement() {
                         <button onClick={handleBorrowSubmit}>Confirm</button>
                         <button onClick={closeBorrowPopup}>Cancel</button>
                     </div>
+         )}
+         </div>
+
     </div>
+
   )
 }
 
