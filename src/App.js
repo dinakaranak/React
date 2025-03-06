@@ -62,6 +62,8 @@ import StudentManagement from './Task1/StudentManagement';
 import Category from './Training/Category';
 import BorrowBook from './Task1/BorrowBook';
 import LibraryManagement from './Task1/LibraryManagement';
+// import AdminSignup from './Task1/AdminSingup';
+import AdminSingup from './Task1/AdminSingup';
 
 
 
@@ -137,6 +139,7 @@ function App() {
           <Route path='/Category' element={<Category />}></Route>
           <Route path='/BorrowBook' element={<BorrowBook />}></Route>
           <Route path='/LibraryManagement' element={<LibraryManagement />}></Route>
+          <Route path='/AdminSingup' element={<AdminSingup />}></Route>
 
          
          
